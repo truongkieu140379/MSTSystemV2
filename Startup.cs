@@ -71,12 +71,12 @@ namespace TutorSearchSystem
                 c => c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Tutor Search API",
-                    Description = "TutorSearch System ASP.NET Core Web API",
+                    Title = "MST System API",
+                    Description = "MST System ASP.NET Core Web API",
                     TermsOfService = new Uri(ConstSwaggerUrl.TERMS_OF_SERVICE),
                     Contact = new OpenApiContact
                     {
-                        Name = "Duong Chinh Ngu",
+                        Name = "Kieu Xuan Truong",
                         Email = string.Empty,
                         Url = new Uri(ConstSwaggerUrl.CONTRACT),
                     },
