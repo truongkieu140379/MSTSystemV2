@@ -145,7 +145,7 @@ namespace TutorSearchSystem
             app.UseSwaggerUI(
                 c =>
                 {
-                    c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "Tutor Search System V1");
+                    c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "MSTSystem V1");
                     c.RoutePrefix = string.Empty;   
                 });
             if (env.IsDevelopment())
