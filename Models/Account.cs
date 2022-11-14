@@ -9,6 +9,11 @@ namespace TutorSearchSystem.Models
 {
     public class Account 
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
+        public int Id { get; set; }
+        public bool Status { get; set; }
+
         [Key]
         [MaxLength(256, ErrorMessage = "Email must be less than 256 characters.")]
         [EmailAddress(ErrorMessage = "Email address is not valid.")]

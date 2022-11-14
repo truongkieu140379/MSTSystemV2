@@ -26,7 +26,7 @@ namespace TutorSearchSystem.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "Duong Chinh Ngu", "Mary Mai" };
+            return new string[] { "Kieu Xuan Truong", "TruongKX" };
         }
 
       
