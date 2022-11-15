@@ -70,10 +70,10 @@ namespace TutorSearchSystem.Services
             }
         }
 
-        public async Task<Response<TuteeDto>> Filter(TuteeParameter parameter)
+        public async Task<Response<CustomerDto>> Filter(TuteeParameter parameter)
         {
             var entities = await _unitOfWork.TuteeRepository.Filter(parameter);
-            return new Response<TuteeDto>
+            return new Response<CustomerDto>
             {
                 CurrentPage = entities.CurrentPage,
                 PageSize = entities.PageSize,
@@ -81,7 +81,7 @@ namespace TutorSearchSystem.Services
                 TotalPages = entities.TotalPages,
                 HasNext = entities.HasNext,
                 HasPrevious = entities.HasPrevious,
-                Data = entities.Select(t => new TuteeDto
+                Data = entities.Select(t => new CustomerDto
                 {
                     Id = t.Id,
                     Fullname = t.Fullname,
@@ -99,22 +99,22 @@ namespace TutorSearchSystem.Services
             };
         }
 
-        public async Task<TuteeDto> Get(string email)
+        public async Task<CustomerDto> Get(string email)
         {
             var entity = await _unitOfWork.TuteeRepository.Get(email);
-            return _mapper.Map<TuteeDto>(entity);
+            return _mapper.Map<CustomerDto>(entity);
         }
 
-        public async Task<IEnumerable<TuteeDto>> GetAll()
+        public async Task<IEnumerable<CustomerDto>> GetAll()
         {
             var entities = await _unitOfWork.TuteeRepository.GetAll();
-            return _mapper.Map<IEnumerable<TuteeDto>>(entities).ToList();
+            return _mapper.Map<IEnumerable<CustomerDto>>(entities).ToList();
         }
 
-        public async Task<TuteeDto> GetById(int id)
+        public async Task<CustomerDto> GetById(int id)
         {
             var entity = await _unitOfWork.TuteeRepository.GetById(id);
-            return _mapper.Map<TuteeDto>(entity);
+            return _mapper.Map<CustomerDto>(entity);
         }
 
         public async Task<int> GetCountInMonth()
@@ -122,10 +122,10 @@ namespace TutorSearchSystem.Services
             return await _unitOfWork.TuteeRepository.GetCountInMonth();
         }
 
-        public async Task<IEnumerable<TuteeDto>> GetTuteeInCourse(int courseId)
+        public async Task<IEnumerable<CustomerDto>> GetTuteeInCourse(int courseId)
         {
             var entities = await _unitOfWork.TuteeRepository.GetTuteeInCourse(courseId);
-            return _mapper.Map<IEnumerable<TuteeDto>>(entities).ToList();
+            return _mapper.Map<IEnumerable<CustomerDto>>(entities).ToList();
         }
 
         //public async Task Inactive(int id)
@@ -136,14 +136,14 @@ namespace TutorSearchSystem.Services
         //    await _unitOfWork.Commit();
         //}
 
-        public async Task Insert(TuteeDto dto)
+        public async Task Insert(CustomerDto dto)
         {
             var entity = _mapper.Map<Tutee>(dto);
             await _unitOfWork.TuteeRepository.Insert(entity);
             await _unitOfWork.Commit();
         }
 
-        public async Task Update(TuteeDto dto)
+        public async Task Update(CustomerDto dto)
         {
             var entity = _mapper.Map<Tutee>(dto);
             await _unitOfWork.TuteeRepository.Update(entity);
@@ -188,7 +188,7 @@ namespace TutorSearchSystem.Services
                 }
         }
 
-        Task IBaseService<TuteeDto>.Inactive(int id)
+        Task IBaseService<CustomerDto>.Inactive(int id)
         {
             throw new NotImplementedException();
         }

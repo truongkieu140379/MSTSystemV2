@@ -6,7 +6,7 @@ using TutorSearchSystem.Global;
 
 namespace TutorSearchSystem.Dtos
 {
-    public class TuteeReportDto : DescriptionBaseDto
+    public class CustomerReportDto : DescriptionBaseDto
     {
         public int Id { get; set; }
         public int ReportTypeId { get; set; }

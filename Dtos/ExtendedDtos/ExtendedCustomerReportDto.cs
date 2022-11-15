@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TutorSearchSystem.Models.ExtendedModels
+namespace TutorSearchSystem.Dtos.ExtendedDtos
 {
-    public class ExtendedTuteeReport : TuteeReport
+    public class ExtendedCustomerReportDto : CustomerReportDto
     {
         public string TuteeName { get; set; }
         public string ConfirmName { get; set; }

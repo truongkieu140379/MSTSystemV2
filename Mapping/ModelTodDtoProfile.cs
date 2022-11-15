@@ -25,7 +25,7 @@ namespace TutorSearchSystem.Mapping
             CreateMap<Membership, MembershipDto>().ReverseMap();
             CreateMap<Role, RoleDto>().ReverseMap();
             CreateMap<Subject, SubjectDto>().ReverseMap();
-            CreateMap<Tutee, TuteeDto>().ReverseMap();
+            CreateMap<Tutee, CustomerDto>().ReverseMap();
             CreateMap<Tutor, TutorDto>().ReverseMap();
             CreateMap<TutorTransaction, TutorTransactionDto>().ReverseMap();
             CreateMap<ClassHasSubject, ClassHasSubjectDto>().ReverseMap();
@@ -47,12 +47,12 @@ namespace TutorSearchSystem.Mapping
             CreateMap<TutorUpdateProfile, TutorUpdateProfileDto>().ReverseMap();
             CreateMap<ExtendedEnrollment, ExtendedEnrollmentDto>().ReverseMap();
             CreateMap<ReportTransaction, ReportTransactionDto>().ReverseMap();
-            CreateMap<TuteeReport, TuteeReportDto>().ReverseMap();
+            CreateMap<TuteeReport, CustomerReportDto>().ReverseMap();
             CreateMap<TutorReport, TutorReportDto>().ReverseMap();
             CreateMap<ReportType, ReportTypeDto>().ReverseMap();
             CreateMap<ExtendedReportType, ExtendedReportTypeDto>().ReverseMap();
             CreateMap<ExtendedTutorReport, ExtendedTutorReportDto>().ReverseMap();
-            CreateMap<ExtendedTuteeReport, ExtendedTuteeReportDto>().ReverseMap();
+            CreateMap<ExtendedCustomerReport, ExtendedCustomerReportDto>().ReverseMap();
             CreateMap<CourseDetail, CourseDetailDto>().ReverseMap();
             CreateMap<ExtendedCourseDetail, ExtendedCourseDetailDto>().ReverseMap();
 

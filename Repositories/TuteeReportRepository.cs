@@ -25,12 +25,12 @@ namespace TutorSearchSystem.Repositories
             return result.Count;
         }
 
-        public async Task<PagedList<ExtendedTuteeReport>> Filter(TuteeReportParameter parameter)
+        public async Task<PagedList<ExtendedCustomerReport>> Filter(TuteeReportParameter parameter)
         {         
             var entities = await _context.TuteeReport.Where(t => 
             (t.CreatedDate >= parameter.FromDate && t.CreatedDate <= parameter.ToDate)
             && t.Enrollment.Tutee.Email.Contains(parameter.TuteeEmail))
-                .Select(t => new ExtendedTuteeReport
+                .Select(t => new ExtendedCustomerReport
                 {
                     Id = t.Id,
                     Description = t.Description,
@@ -57,7 +57,7 @@ namespace TutorSearchSystem.Repositories
             {
                 entities = entities.Where(t => t.ReportTypeId == parameter.ReportType).ToList();
             }
-            return PagedList<ExtendedTuteeReport>.ToPagedList(entities, parameter.PageNumber, parameter.PageSize);
+            return PagedList<ExtendedCustomerReport>.ToPagedList(entities, parameter.PageNumber, parameter.PageSize);
         }
     }
 }

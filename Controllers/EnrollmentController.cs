@@ -44,7 +44,7 @@ namespace TutorSearchSystem.Controllers
         }
 
         // GET api/<AccountController>/5
-        [HttpGet("course/tutee/{courseId}/{tuteeId}")]
+        [HttpGet("course/customer/{courseId}/{customerId}")]
         public async Task<ActionResult<EnrollmentDto>> Get(int courseId, int tuteeId)
         {
             EnrollmentDto dto = await _service.Get(courseId, tuteeId);

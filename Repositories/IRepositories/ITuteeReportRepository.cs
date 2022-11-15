@@ -11,7 +11,7 @@ namespace TutorSearchSystem.Repositories.IRepositories
 {
     public interface ITuteeReportRepository : IGenericRepository<TuteeReport>
     {
-        Task<PagedList<ExtendedTuteeReport>> Filter(TuteeReportParameter parameter);
+        Task<PagedList<ExtendedCustomerReport>> Filter(TuteeReportParameter parameter);
         Task<int> CountPending();
     }
 }

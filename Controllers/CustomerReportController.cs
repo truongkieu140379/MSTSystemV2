@@ -15,18 +15,18 @@ using TutorSearchSystem.Dtos.ExtendedDtos;
 namespace TutorSearchSystem.Controllers
 {
     [Authorize]
-    [Route("api/tutee-report")]
+    [Route("api/customer-report")]
     [ApiController]
-    public class TuteeReportController : ControllerBase
+    public class CustomerReportController : ControllerBase
     {
         private readonly ITuteeReportService _service;
-        public TuteeReportController(ITuteeReportService service)
+        public CustomerReportController(ITuteeReportService service)
         {
             _service = service;
         }
 
         [HttpGet("filter")]
-        public async Task<ActionResult<Response<ExtendedTuteeReportDto>>>Filter([FromQuery]TuteeReportParameter parameter)
+        public async Task<ActionResult<Response<ExtendedCustomerReportDto>>>Filter([FromQuery]TuteeReportParameter parameter)
         {
             return Ok(await _service.Filter(parameter));
         }
@@ -37,7 +37,7 @@ namespace TutorSearchSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>Insert([FromBody] TuteeReportDto dto)
+        public async Task<IActionResult>Insert([FromBody] CustomerReportDto dto)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace TutorSearchSystem.Controllers
         }
 
         [HttpPut("accept/{id}")]
-        public async Task<ActionResult<CusResponse>>Accept(int id , [FromBody] TuteeReportDto dto)
+        public async Task<ActionResult<CusResponse>>Accept(int id , [FromBody] CustomerReportDto dto)
         {
             if(id != dto.Id)
             {
@@ -64,7 +64,7 @@ namespace TutorSearchSystem.Controllers
             }
         }
         [HttpPut("deny/{id}")]
-        public async Task<ActionResult<CusResponse>> Deny( int id, [FromBody] TuteeReportDto dto)
+        public async Task<ActionResult<CusResponse>> Deny( int id, [FromBody] CustomerReportDto dto)
         {
             if (id != dto.Id)
             {

@@ -6,7 +6,7 @@ using TutorSearchSystem.Global;
 
 namespace TutorSearchSystem.Dtos
 {
-    public class TuteeDto : UserBaseDto
+    public class CustomerDto : UserBaseDto
     {
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; } = Tools.GetUTC();

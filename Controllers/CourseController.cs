@@ -141,9 +141,9 @@ namespace TutorSearchSystem.Controllers
             }
         }
 
-        //get course by tuteeId; we need to join enrollment table and course table; select course by tuteeId
+        //get course by customerId; we need to join enrollment table and course table; select course by customerId
         //then get course by subjectId and classId
-        [HttpGet("tutee/subject/class/{result}")]
+        [HttpGet("customer/subject/class/{result}")]
         public async Task<ActionResult<IEnumerable<CourseDto>>> Search(int tuteeId, int subjectId, int classId)
         {
             try
@@ -163,7 +163,7 @@ namespace TutorSearchSystem.Controllers
 
         //get COurse by tuteeId and enrollment status(Accepted, Denied, pending)
         //get course by tuteeId; we need to join enrollment table and course table; select course by tuteeId
-        [HttpGet("courses-by-tutee-id/{tuteeId}")]
+        [HttpGet("courses-by-customer-id/{customerId}")]
         public async Task<ActionResult<IEnumerable<CourseDto>>> Search(int tuteeId)
         {
             try
@@ -183,7 +183,7 @@ namespace TutorSearchSystem.Controllers
 
         //get Courses have status active;
         //get courses doesn't register by specific tutee
-        [HttpGet("tutee-home/{tuteeId}/")]
+        [HttpGet("customer-home/{customerId}/")]
         public async Task<ActionResult<IEnumerable<CourseTutorDto>>> GetActiveUnregisteredCourses(int tuteeId)
         {
             try

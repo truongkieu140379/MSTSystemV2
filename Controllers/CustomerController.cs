@@ -14,29 +14,29 @@ using TutorSearchSystem.Services.IService;
 namespace TutorSearchSystem.Controllers
 {
     [Authorize]
-    [Route("api/tutees")]
+    [Route("api/customer")]
     [ApiController]
-    public class TuteeController : ControllerBase
+    public class CustomerController : ControllerBase
     {
         private readonly ITuteeService _service;
 
-        public TuteeController(ITuteeService service)
+        public CustomerController(ITuteeService service)
         {
             _service = service;
         }
 
         // GET: api/<AccountController>
         [HttpGet("all")]
-        public async Task<IEnumerable<TuteeDto>> Get()
+        public async Task<IEnumerable<CustomerDto>> Get()
         {
             return await _service.GetAll();
         }
 
         // GET api/<AccountController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TuteeDto>> Get(int id)
+        public async Task<ActionResult<CustomerDto>> Get(int id)
         {
-            TuteeDto dto = await _service.GetById(id);
+            CustomerDto dto = await _service.GetById(id);
             if (dto == null)
             {
                 return NotFound();
@@ -46,9 +46,9 @@ namespace TutorSearchSystem.Controllers
 
         // GET tutee by email
         [HttpGet("email/{email}")]
-        public async Task<ActionResult<TuteeDto>> Get(String email)
+        public async Task<ActionResult<CustomerDto>> Get(String email)
         {
-            TuteeDto dto = await _service.Get(email);
+            CustomerDto dto = await _service.Get(email);
             if (dto == null)
             {
                 return NotFound();
@@ -57,8 +57,8 @@ namespace TutorSearchSystem.Controllers
         }
 
         //get tutees in a course;
-        [HttpGet("tutee-in-course/{courseId}")]
-        public async Task<ActionResult<IEnumerable<TuteeDto>>> GetTuteeInCourse(int courseId)
+        [HttpGet("customer-in-course/{courseId}")]
+        public async Task<ActionResult<IEnumerable<CustomerDto>>> GetTuteeInCourse(int courseId)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace TutorSearchSystem.Controllers
         }
            [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<TuteeDto>> Post(TuteeDto dto)
+        public async Task<ActionResult<CustomerDto>> Post(CustomerDto dto)
         {
             await _service.Insert(dto);
             return NoContent();
@@ -84,7 +84,7 @@ namespace TutorSearchSystem.Controllers
 
         // PUT api/<AccountController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, TuteeDto dto)
+        public async Task<IActionResult> Put(int id, CustomerDto dto)
         {
             if (id != dto.Id)
             {
@@ -127,7 +127,7 @@ namespace TutorSearchSystem.Controllers
             
         }
 
-        [HttpGet("get-count-tutee-in-month")]
+        [HttpGet("get-count-customer-in-month")]
         public async Task<ActionResult<int>> GetCountInMonth()
         {
             return Ok(await _service.GetCountInMonth());
@@ -135,7 +135,7 @@ namespace TutorSearchSystem.Controllers
 
 
         [HttpGet("filter")]
-        public async Task<ActionResult<Response<TuteeDto>>> Filter([FromQuery] TuteeParameter parameter)
+        public async Task<ActionResult<Response<CustomerDto>>> Filter([FromQuery] TuteeParameter parameter)
         {
             try
             {

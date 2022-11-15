@@ -9,11 +9,11 @@ using TutorSearchSystem.Dtos.ExtendedDtos;
 
 namespace TutorSearchSystem.Services.IService
 {
-    public interface ITuteeReportService :IBaseService<TuteeReportDto>
+    public interface ITuteeReportService :IBaseService<CustomerReportDto>
     {
-        Task<Response<ExtendedTuteeReportDto>> Filter(TuteeReportParameter parameter);
-        Task<CusResponse> Deny(TuteeReportDto dto);
-        Task<CusResponse> Accept(TuteeReportDto dto);
+        Task<Response<ExtendedCustomerReportDto>> Filter(TuteeReportParameter parameter);
+        Task<CusResponse> Deny(CustomerReportDto dto);
+        Task<CusResponse> Accept(CustomerReportDto dto);
         Task<int> CountPending();
     }
 }

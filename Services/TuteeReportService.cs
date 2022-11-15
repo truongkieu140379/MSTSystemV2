@@ -24,7 +24,7 @@ namespace TutorSearchSystem.Services
             _mapper = mapper;
         }
 
-        public async Task<CusResponse> Accept(TuteeReportDto dto)
+        public async Task<CusResponse> Accept(CustomerReportDto dto)
         {
             
             var entity = await _unitOfWork.TuteeReportRepository.GetById(dto.Id);
@@ -64,7 +64,7 @@ namespace TutorSearchSystem.Services
             return await _unitOfWork.TuteeReportRepository.CountPending();
         }
 
-        public async Task<CusResponse> Deny(TuteeReportDto dto)
+        public async Task<CusResponse> Deny(CustomerReportDto dto)
         {
             var entity = await _unitOfWork.TuteeReportRepository.GetById(dto.Id);
             if (entity != null)
@@ -98,10 +98,10 @@ namespace TutorSearchSystem.Services
             };
         }
 
-        public async Task<Response<ExtendedTuteeReportDto>> Filter(TuteeReportParameter parameter)
+        public async Task<Response<ExtendedCustomerReportDto>> Filter(TuteeReportParameter parameter)
         {
             var entities = await _unitOfWork.TuteeReportRepository.Filter(parameter);
-            return new Response<ExtendedTuteeReportDto>
+            return new Response<ExtendedCustomerReportDto>
             {
                 CurrentPage = entities.CurrentPage,
                 HasNext = entities.HasNext,
@@ -109,7 +109,7 @@ namespace TutorSearchSystem.Services
                 TotalCount = entities.TotalCount,
                 TotalPages = entities.TotalPages,
                 PageSize = entities.PageSize,
-                Data = entities.Select(t => new ExtendedTuteeReportDto
+                Data = entities.Select(t => new ExtendedCustomerReportDto
                 {
                     Id = t.Id,
                     Description = t.Description,
@@ -130,16 +130,16 @@ namespace TutorSearchSystem.Services
             };
         }
 
-        public async Task<IEnumerable<TuteeReportDto>> GetAll()
+        public async Task<IEnumerable<CustomerReportDto>> GetAll()
         {
             var entities = await _unitOfWork.TuteeReportRepository.GetAll();
-            return _mapper.Map<IEnumerable<TuteeReportDto>>(entities).ToList();
+            return _mapper.Map<IEnumerable<CustomerReportDto>>(entities).ToList();
         }
 
-        public async Task<TuteeReportDto> GetById(int id)
+        public async Task<CustomerReportDto> GetById(int id)
         {
             var entity = await _unitOfWork.TuteeReportRepository.GetById(id);
-            return _mapper.Map<TuteeReportDto>(entity);
+            return _mapper.Map<CustomerReportDto>(entity);
         }
 
         public Task Inactive(int id)
@@ -147,7 +147,7 @@ namespace TutorSearchSystem.Services
             throw new NotImplementedException();
         }
 
-        public async Task Insert(TuteeReportDto dto)
+        public async Task Insert(CustomerReportDto dto)
         {
             var entity = _mapper.Map<TuteeReport>(dto);
             await _unitOfWork.TuteeReportRepository.Insert(entity);
@@ -156,7 +156,7 @@ namespace TutorSearchSystem.Services
             await notificationService.SendNotificationToAdmin("Report Request", "You have new report request!");
         }
 
-        public async Task Update(TuteeReportDto dto)
+        public async Task Update(CustomerReportDto dto)
         {
             var entity =_mapper.Map<TuteeReport>(dto);
             entity.ConfirmedDate = Tools.GetUTC();

@@ -8,11 +8,11 @@ using TutorSearchSystem.Filters;
 namespace TutorSearchSystem.Services.IService
 {
 
-    public interface ITuteeService : IBaseService<TuteeDto>
+    public interface ITuteeService : IBaseService<CustomerDto>
     {
-        Task<TuteeDto> Get(String email);
-        Task<IEnumerable<TuteeDto>> GetTuteeInCourse(int courseId);
-        Task<Response<TuteeDto>> Filter(TuteeParameter parameter);
+        Task<CustomerDto> Get(String email);
+        Task<IEnumerable<CustomerDto>> GetTuteeInCourse(int courseId);
+        Task<Response<CustomerDto>> Filter(TuteeParameter parameter);
         Task<int> GetCountInMonth();
         Task<CusResponse> Active(int id);
         Task<CusResponse> Inactive(int id);
